@@ -1,6 +1,7 @@
 package db_repo
 
 import (
+	"database/sql"
 	"event_management_service_10MS/data_responses"
 )
 
@@ -33,4 +34,22 @@ func (pr *MySQLRepository) GetAllMenuTypeListInfo(
 	pagingData, err := GetPaginationInfoData(totalCount, currentPage, itemsPerPage)
 
 	return dataList, pagingData, err
+}
+
+func (pr *MySQLRepository) GetEventDetailsByEventId(eventId int64) (*data_responses.EventDetailsResponses, int, error) {
+	event := data_responses.EventDetailsResponses{}
+	err := pr.db.Get(&event, "SELECT id, title, start_at, end_at FROM events WHERE id = ?", eventId)
+	if err == sql.ErrNoRows {
+		return nil, 0, NoDataFound
+	} else if err != nil {
+		return nil, 0, err
+	}
+
+	var totalWorkshops int
+	err = pr.db.Get(&totalWorkshops, "SELECT COUNT(*) FROM workshops WHERE event_id = ?", eventId)
+	if err != nil {
+		return nil, 0, err
+	}
+
+	return &event, totalWorkshops, err
 }

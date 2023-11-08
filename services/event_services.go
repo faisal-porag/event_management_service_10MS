@@ -13,3 +13,15 @@ func GetEventsServices(
 	data, pageInfo, err := s.DbRepository.GetAllMenuTypeListInfo(currentPage, itemsPerPage)
 	return data, pageInfo, err
 }
+
+func GetEventDetailsByEventIdServices(
+	eventId int64,
+	s *state.State,
+) (*data_responses.EventDetailsResponses, error) {
+	data, totalWorkshops, err := s.DbRepository.GetEventDetailsByEventId(eventId)
+	if data != nil {
+		data.TotalWorkshops = totalWorkshops
+	}
+
+	return data, err
+}
