@@ -33,3 +33,30 @@ make docker_run
 
 [Postman Collection](https://github.com/faisal-porag/event_management_service_10MS/blob/master/postman_collection/event_management_system_10MS.postman_collection.json)
 
+---
+
+```shell
+curl --location 'localhost:8090/api/v1/get-event-list?current_page=1&item_per_page=10'
+```
+
+```shell
+curl --location 'localhost:8090/api/v1/get-event-details/1'
+```
+
+```shell
+curl --location 'localhost:8090/api/v1/get-workshop-list/1'
+```
+
+```shell
+curl --location 'localhost:8090/api/v1/get-workshop-details/1'
+```
+
+```shell
+curl --location 'localhost:8090/api/v1/workshop-reservation' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+	"name": "Faisal Porag",
+	"email": "faisal.porag@example.com"
+}'
+```
+
