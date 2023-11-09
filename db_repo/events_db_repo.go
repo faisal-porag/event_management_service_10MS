@@ -5,7 +5,7 @@ import (
 	"event_management_service_10MS/data_responses"
 )
 
-func (pr *MySQLRepository) GetAllMenuTypeListInfo(
+func (pr *MySQLRepository) GetAllEventListInfo(
 	currentPage int,
 	itemsPerPage int,
 ) ([]*data_responses.EventListResponses, *data_responses.Pagination, error) {
@@ -14,10 +14,10 @@ func (pr *MySQLRepository) GetAllMenuTypeListInfo(
 
 	query := `
 	   SELECT id, title, start_at, end_at, (
-	       SELECT COUNT(*) FROM events WHERE start_at > NOW() OR end_at > NOW()
+	       SELECT COUNT(*) FROM events WHERE start_at > NOW() OR end_at < NOW()
 	   ) as total_count
 	   FROM events
-	   WHERE start_at > NOW() OR end_at > NOW()
+	   WHERE start_at > NOW() OR end_at < NOW()
 	   LIMIT ? OFFSET ?
 	`
 

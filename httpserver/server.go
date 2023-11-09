@@ -32,7 +32,7 @@ func Serve(s *state.State) {
 		// APIS FOR EVENT MANAGEMENT SERVICE
 		v1.GET("/get-event-list", controllers.HandleEventList(s))
 		v1.GET("/get-event-details/:event_id", controllers.HandleEventDetails(s))
-		v1.GET("/get-workshop-list", controllers.HandleWorkshopList(s))
+		v1.GET("/get-workshop-list/:event_id", controllers.HandleWorkshopListForSingleEvent(s))
 		v1.GET("/get-workshop-details/:workshop_id", controllers.HandleWorkshopDetails(s))
 		v1.POST("/workshop-reservation", controllers.HandleWorkshopReservation(s))
 

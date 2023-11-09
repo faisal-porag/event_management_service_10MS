@@ -10,7 +10,7 @@ func GetEventsServices(
 	itemsPerPage int,
 	s *state.State,
 ) ([]*data_responses.EventListResponses, *data_responses.Pagination, error) {
-	data, pageInfo, err := s.DbRepository.GetAllMenuTypeListInfo(currentPage, itemsPerPage)
+	data, pageInfo, err := s.DbRepository.GetAllEventListInfo(currentPage, itemsPerPage)
 	return data, pageInfo, err
 }
 
