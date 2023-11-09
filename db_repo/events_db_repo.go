@@ -14,10 +14,10 @@ func (pr *MySQLRepository) GetAllEventListInfo(
 
 	query := `
 	   SELECT id, title, start_at, end_at, (
-	       SELECT COUNT(*) FROM events WHERE start_at > NOW() OR end_at < NOW()
+	       SELECT COUNT(*) FROM events WHERE start_at > NOW()
 	   ) as total_count
 	   FROM events
-	   WHERE start_at > NOW() OR end_at < NOW()
+	   WHERE start_at > NOW()
 	   LIMIT ? OFFSET ?
 	`
 

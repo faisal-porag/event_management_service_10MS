@@ -11,7 +11,7 @@ func (pr *MySQLRepository) GetActiveWorkshopsForEvent(eventId int64) ([]*data_re
 	query := `
 		SELECT id, title, description, start_at, end_at
 		FROM workshops
-		WHERE event_id = ? AND (start_at > NOW() OR end_at < NOW())
+		WHERE event_id = ? AND start_at > NOW()
 	`
 
 	err := pr.db.Select(&workshops, query, eventId)
