@@ -13,13 +13,22 @@ func (pr *MySQLRepository) GetAllMenuTypeListInfo(
 	var dataList []*data_responses.EventListResponses
 
 	query := `
-        SELECT id, title, start_at, end_at, (
-            SELECT COUNT(*) FROM events WHERE start_at > NOW() OR end_at > NOW()
-        ) as total_count
-        FROM events
-        WHERE start_at > NOW() OR end_at > NOW()
-        LIMIT ? OFFSET ?
-    `
+	   SELECT id, title, start_at, end_at, (
+	       SELECT COUNT(*) FROM events WHERE start_at > NOW() OR end_at > NOW()
+	   ) as total_count
+	   FROM events
+	   WHERE start_at > NOW() OR end_at > NOW()
+	   LIMIT ? OFFSET ?
+	`
+
+	//query := `
+	//    SELECT id, title, start_at, end_at, (
+	//        SELECT COUNT(*) FROM events WHERE NOW() BETWEEN start_at AND end_at
+	//    ) as total_count
+	//    FROM events
+	//    WHERE NOW() BETWEEN start_at AND end_at
+	//    LIMIT ? OFFSET ?
+	//`
 
 	var totalCount int64
 	err := pr.db.Select(&dataList, query, itemsPerPage, offset)
