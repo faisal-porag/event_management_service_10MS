@@ -10,8 +10,9 @@ import (
 )
 
 func Serve(s *state.State) {
-	// TODO:: UNCOMMENT THIS LINE IN PRODUCTION
-	//gin.SetMode(gin.ReleaseMode)
+	if s.Cfg.IsProductionMode {
+		gin.SetMode(gin.ReleaseMode)
+	}
 
 	// Create a Gin router instance
 	router := gin.Default()

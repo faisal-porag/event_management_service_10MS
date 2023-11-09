@@ -5,8 +5,9 @@ import (
 )
 
 type Config struct {
-	ApplicationPort int  `env:"APPLICATION_PORT"`
-	DebugMode       bool `env:"DEBUG" envDefault:"false"`
+	ApplicationPort  int  `env:"APPLICATION_PORT"`
+	DebugMode        bool `env:"DEBUG" envDefault:"false"`
+	IsProductionMode bool `env:"IS_PROD_MODE"`
 
 	MySqlHost         string `env:"MYSQL_DATABASE_HOST"`
 	MySqlDbPort       string `env:"MYSQL_DATABASE_PORT"`
