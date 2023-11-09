@@ -10,4 +10,9 @@ clean:
 run_bin:
 	./bin/event_management_service
 
+docker_build:
+	docker build -t event_management_service_10ms .
 
+docker_run:
+	#docker run -p 8090:8090 -t --name event_management_service_10MS_container event_management_service_10ms
+	docker run -p 8090:8090 -d -t --name event_management_service_10MS_container event_management_service_10ms

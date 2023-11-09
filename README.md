@@ -1,8 +1,8 @@
 ## Event Management Service For 10 MS
 
-> Project Run Instructions 
+> Project run instructions 
 
-First install all dependencies 
+Install all the dependencies using below command 
 ```shell
 go get
 ```
@@ -15,6 +15,17 @@ Finally, run the binary file
 make run_bin
 ```
 
+---
+
+> Project build with docker
+
+```shell
+make docker_build
+```
+
+```shell
+make docker_run
+```
 
 ---
 
