@@ -15,3 +15,10 @@ Finally, run the binary file
 make run_bin
 ```
 
+
+---
+
+#### ** Check out the postman collection ** 
+
+[Postman Collection](https://github.com/faisal-porag/event_management_service_10MS/blob/master/postman_collection/event_management_system_10MS.postman_collection.json)
+
